@@ -13,7 +13,7 @@ Gallery](http://miromannino.github.io/Justified-Gallery/) and
 
 ## Installation and usage
 
-    pip install https://github.com/vmassuchetto/shotwell-web-client.git
+    pip install git+https://github.com/vmassuchetto/shotwell-web-client.git
     shotwell-web-client
 
 The user that will execute the web server must have access to the database,
