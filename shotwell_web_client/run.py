@@ -8,7 +8,11 @@ from flask import Flask, g, request, jsonify, \
     render_template, send_from_directory, send_file
 
 app = Flask(__name__)
-app.config.from_object('shotwell_web_client.config')
+for c in ('shotwell_web_client.config', 'config'):
+    try:
+        app.config.from_object(c)
+    except:
+        pass
 
 def dict_factory(cursor, row):
     d = {}
