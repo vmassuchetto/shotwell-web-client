@@ -34,5 +34,6 @@ Check the `config.py` file if your Shotwell installation requires different path
     virtualenv env
     source env/bin/activate
     pip install -r requirements.txt
+    cd shotwell_web_client
     npm install
     python run.py
