@@ -1,0 +1,4 @@
+recursive-include shotwell_web_client/templates *
+recursive-include shotwell_web_client/static *
+recursive-include shotwell_web_client/node_modules *
+include requirements.txt

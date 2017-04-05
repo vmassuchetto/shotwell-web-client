@@ -1,0 +1,16 @@
+# Python
+__pycache__
+
+# Setuptools
+*.egg-info
+/.eggs
+/build
+/dist
+/shotwell_web_client/node_modules/
+
+# Virtualenv
+/env
+
+# vi
+*.swp
+*.swo

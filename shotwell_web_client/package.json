@@ -1,0 +1,18 @@
+{
+  "name": "shotwell-web-client",
+  "version": "1.0.0",
+  "description": "A web client for Shotwell photo manager",
+  "repository": "http://github.com/vmassuchetto/shotwell-web-client",
+  "main": "shotwell-web-client",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "jquery": "^2.1.0",
+    "justifiedGallery": "^3.6.2",
+    "swipebox": "^1.4.6"
+  }
+}
