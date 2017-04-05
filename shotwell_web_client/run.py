@@ -104,7 +104,6 @@ def items():
         LIMIT %d,%d
         ''' % (where, where, orderby, int(start), int(app.config['LOAD']))
     db = get_db()
-    print(sql)
     c = db.execute(sql)
     return jsonify(c.fetchall())
 
