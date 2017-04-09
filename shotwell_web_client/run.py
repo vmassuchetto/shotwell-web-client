@@ -1,4 +1,4 @@
-from os.path import dirname, join, expanduser
+import os
 from sqlite3 import connect
 from re import sub
 from time import mktime
@@ -22,7 +22,7 @@ def dict_factory(cursor, row):
 
 def connect_db():
     """Connects to the Shotwell database."""
-    c = connect(expanduser(app.config['DATABASE']))
+    c = connect(os.path.expanduser(app.config['DATABASE']))
     c.row_factory = dict_factory
     return c
 
@@ -117,7 +117,7 @@ def thumb(type, id):
         prefix = 'thumb'
     elif type == 'video':
         prefix = 'video-'
-    return send_file('%s/thumbs128/%s%016x.jpg' % (expanduser(app.config['THUMBPATH']), prefix, int(id)))
+    return send_file('%s/%s%016x.jpg' % (os.path.expanduser(app.config['THUMBPATH']), prefix, int(id)))
 
 @app.route('/photo/<id>')
 def photo(id):
@@ -132,7 +132,7 @@ def video(id):
     return send_file(c.fetchone()['filename'])
 
 def main():
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=5000, debug=os.environ.get('DEBUG', False))
 
 if __name__ == '__main__':
     main()

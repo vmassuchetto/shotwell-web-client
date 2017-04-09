@@ -36,4 +36,4 @@ Check the `config.py` file if your Shotwell installation requires different path
     pip install -r requirements.txt
     cd shotwell_web_client
     npm install
-    python run.py
+    DEBUG=True python run.py
