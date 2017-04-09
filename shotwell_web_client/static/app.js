@@ -53,12 +53,12 @@ $("#menu-toggle").click(function(e) {
 });
 
 $('#gallery').justifiedGallery(_jg_params).on('jg.complete', function(){
-        $('#gallery a').swipebox();
-        window.setTimeout(function() {
-            if ($('#gallery').height() < $(window).height())
-                loadItems();
-        }, 500);
-    });
+    $('#gallery a').swipebox();
+    window.setTimeout(function() {
+        if ($('#gallery').height() < $(window).height())
+            loadItems();
+    }, 500);
+});
 
 $(window).scroll(function() {
     if ($(window).scrollTop() + $(window).height() == $(document).height()) {
@@ -67,4 +67,3 @@ $(window).scroll(function() {
 });
 
 loadItems();
-
