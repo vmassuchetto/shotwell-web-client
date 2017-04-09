@@ -1,10 +1,9 @@
 var _start = 0;
 var _query = 0;
 var _jg_params = {
-    rowHeight: 96,
     margins: 10,
     border: 10,
-    waitThumbnailsLoad: true
+    imagesAnimationDuration: 0
 };
 
 function loadItems() {
