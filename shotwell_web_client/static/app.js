@@ -24,13 +24,12 @@ $('.month-list,.day-list').hide();
 
 $('.toggle-year,.toggle-month').click(function(e) {
     e.preventDefault();
+    $(this).toggleClass('glyphicon-triangle-right glyphicon-triangle-bottom');
     if ($(this).data('clicked')) {
         $(this).data('clicked', 0);
-        $(this).html('&#9654;');
         $(this).parent().find('>ul').slideUp();
     } else {
         $(this).data('clicked', 1);
-        $(this).html('&#9660;');
         $(this).parent().find('>ul').slideDown();
     }
 });
@@ -45,10 +44,7 @@ $('.sidebar-nav a.link').click(function(e) {
 
 $("#menu-toggle").click(function(e) {
     e.preventDefault();
-    if ($('#wrapper').hasClass('toggled'))
-        $(this).html('&#9654;');
-    else
-        $(this).html('&#9664;');
+    $(this).toggleClass('glyphicon-triangle-right glyphicon-triangle-left');
     $("#wrapper").toggleClass("toggled");
 });
 

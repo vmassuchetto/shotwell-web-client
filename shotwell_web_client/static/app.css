@@ -16,6 +16,7 @@ body {
 
 #menu-toggle {
     position: fixed;
+    top: 10px;
     z-index: 9999;
 }
 

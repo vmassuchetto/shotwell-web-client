@@ -29,10 +29,10 @@
             <li><a><b>Events</b></a>
             <ul class="year-list">
                 {% for year in date_tree %}
-                    <li class="years"><a href="#" class="toggle-year">&#9654;</a>&nbsp;<span class="glyphicon glyphicon-folder-close"></span>&nbsp;<a href="#event_{{ year }}" class="link">{{ year }}</a>
+                    <li class="years"><a href="#" class="toggle-year glyphicon glyphicon-triangle-right"></a>&nbsp;<span class="glyphicon glyphicon-folder-close"></span>&nbsp;<a href="#event_{{ year }}" class="link">{{ year }}</a>
                         <ul class="month-list">
                         {% for month in date_tree[year] %}
-                            <li class="months"><a href="#" class="toggle-month">&#9654;</a>&nbsp;<span class="glyphicon glyphicon-folder-close"></span>&nbsp;<a href="#event_{{ year }}{{ month }}" class="link">{{ month }}</a>
+                            <li class="months"><a href="#" class="toggle-month glyphicon glyphicon-triangle-right"></a>&nbsp;<span class="glyphicon glyphicon-folder-close"></span>&nbsp;<a href="#event_{{ year }}{{ month }}" class="link">{{ month }}</a>
                                 <ul class="day-list">
                                 {% for day in date_tree[year][month] %}
                                     {% for d in date_tree[year][month][day] %}
@@ -53,7 +53,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                    <a href="#menu-toggle" class="btn btn-default btn-lg" id="menu-toggle">&#9654;</a>
+                    <a href="#menu-toggle" class="btn btn-default btn-lg glyphicon glyphicon-triangle-right" id="menu-toggle"></a>
                     <div id="gallery" class="justified-gallery"></div>
                 </div>
             </div>
