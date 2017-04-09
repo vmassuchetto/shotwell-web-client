@@ -61,7 +61,7 @@ $('#gallery').justifiedGallery(_jg_params).on('jg.complete', function(){
 });
 
 $(window).scroll(function() {
-    if ($(window).scrollTop() + $(window).height() == $(document).height()) {
+    if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
         loadItems();
     }
 });
