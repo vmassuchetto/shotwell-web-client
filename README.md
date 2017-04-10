@@ -11,10 +11,6 @@ Uses [Flask](http://flask.pocoo.org), [Bootstrap](http://getbootstrap.com/),
 Gallery](http://miromannino.github.io/Justified-Gallery/) and
 [Swipebox](http://brutaldesign.github.io/swipebox/).
 
-If you need to generate mising thumbnails, use [this
-script](https://gist.github.com/vmassuchetto/1c11a671f890a770a7a030c06d9f1f7e)
-to do it all at once.
-
 ## Installation and usage
 
     pip install git+https://github.com/vmassuchetto/shotwell-web-client.git
@@ -30,6 +26,9 @@ Check the `config.py` file if your Shotwell installation requires different path
     DATABASE = "~/.local/share/shotwell/data/photo.db"  # database path
     THUMBPATH = "~/.cache/shotwell/thumbs/"             # thumbnails path
     LOAD = 25                                           # images to load on scroll
+
+If you need to generate mising thumbnails without browsing Shotwell, use [this
+script](https://gist.github.com/vmassuchetto/1c11a671f890a770a7a030c06d9f1f7e).
 
 ## Development
 
