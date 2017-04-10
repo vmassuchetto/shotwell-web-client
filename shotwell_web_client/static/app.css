@@ -128,3 +128,14 @@ body {
         margin-right: 0;
     }
 }
+
+.play {
+    position: absolute;
+    top: 25%;
+    width: 100%;
+    min-height: 64px;
+    z-index: 999;
+    font-size: 72px;
+    color: white;
+    text-align: center;
+}

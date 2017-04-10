@@ -10,11 +10,15 @@ function loadItems() {
     _start = $('#gallery a').length;
     $.getJSON('/items/?start=' + _start + '&query=' + _query, function(data) {
         $.each(data, function(i) {
-            if (data[i].type == 'video')
+            if (data[i].type == 'video') {
                 v = '?swipeboxvideo=1';
-            else
+                play = '<i class="play glyphicon glyphicon-play-circle"></i>';
+            } else {
                 v = '';
-            $('#gallery').append('<a href="/' + data[i].type + '/' + data[i].item_id + v + '"><img src="/thumb/' + data[i].type + '/' + data[i].item_id + '" /></a>');
+                play = '';
+            }
+            $('#gallery').append('<a href="/' + data[i].type + '/' + data[i].item_id + v + '">' +
+                play + '<img src="/thumb/' + data[i].type + '/' + data[i].item_id + '" /></a>');
         });
         $('#gallery').justifiedGallery('norewind', _jg_params);
     });
