@@ -42,6 +42,6 @@ Check the `config.py` file if your Shotwell installation requires different path
 
 * [`shotwell-thumbnailer`](https://gist.github.com/vmassuchetto/1c11a671f890a770a7a030c06d9f1f7e)
   generate missing thumbnails without browsing Shotwell
-* [`shotwell-sync-dirs`](https://gist.github.com/vmassuchetto/edad377425c1274cb6f9e432e9a74de2):
+* [`shotwell-sync-dirs`](https://gist.github.com/vmassuchetto/edad377425c1274cb6f9e432e9a74de2)
   syncronize directory structure of files, moving them to their exposed time
   adjusted on Shotwell
