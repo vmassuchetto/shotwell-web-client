@@ -27,9 +27,6 @@ Check the `config.py` file if your Shotwell installation requires different path
     THUMBPATH = "~/.cache/shotwell/thumbs/"             # thumbnails path
     LOAD = 25                                           # images to load on scroll
 
-If you need to generate mising thumbnails without browsing Shotwell, use [this
-script](https://gist.github.com/vmassuchetto/1c11a671f890a770a7a030c06d9f1f7e).
-
 ## Development
 
     git clone https://github.com/vmassuchetto/shotwell-web-client.git
@@ -40,3 +37,11 @@ script](https://gist.github.com/vmassuchetto/1c11a671f890a770a7a030c06d9f1f7e).
     cd shotwell_web_client
     npm install
     DEBUG=True python run.py
+
+## Additional scripts
+
+* [shotwell-thumbnailer](https://gist.github.com/vmassuchetto/1c11a671f890a770a7a030c06d9f1f7e):
+  generate missing thumbnails without browsing Shotwell
+* [shotwell-sync-dirs](https://gist.github.com/vmassuchetto/edad377425c1274cb6f9e432e9a74de2):
+  syncronize directory structure of files, moving them to their exposed time adjusted
+  on Shotwell
