@@ -48,6 +48,17 @@
                 {% endfor %}
             </ul>
             </li>
+        </ul>
+        {% if tags %}
+        <ul class="sidebar-nav events-nav">
+            <li><a><b>Tags</b></a>
+            <ul class="year-list">
+                {% for tag in tags %}
+                    <li><span class="glyphicon glyphicon-tag"></span>&nbsp;<a href="#tag_{{ tag.name }}" class="link">{{ tag.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </ul>
+        {% endif %}
     </div>
 
     <div id="page-content-wrapper">

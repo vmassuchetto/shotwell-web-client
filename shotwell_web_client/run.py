@@ -59,11 +59,6 @@ def get_date_tree():
         t[date.strftime('%Y')][date.strftime('%B')][date.strftime('%d')].add(formatted)
     return t
 
-@app.route('/')
-def index():
-    date_tree = get_date_tree()
-    return render_template('index.html', date_tree=date_tree)
-
 @app.route('/vendor/<path:path>')
 def send_vendor(path):
     return send_from_directory('node_modules/', path)
@@ -95,6 +90,62 @@ def items():
         if date is not None:
             where += " AND exposure_time >= '%s' AND exposure_time < '%s'" % (
                 int(mktime(date[0].timetuple())), int(mktime(date[1].timetuple())))
+    elif query.startswith('tag_'):
+        name = query[4:]
+
+        sql = '''
+        SELECT * FROM TagTable WHERE name = "%s"
+        ''' % name
+
+        db = get_db()
+        c = db.execute(sql)
+        row = c.fetchone()
+
+        photo_ids = [0]
+        video_ids = [0]
+        if row['photo_id_list']:
+            tmp = row['photo_id_list'].split(',')
+
+            for val in tmp:
+                video = False
+                if 'thumb' == val[0:5]:
+                    strHex = val[5:]
+                elif 'video-' == val[0:6]:
+                    strHex = val[6:]
+                    video = True
+                while '0' == strHex[0:1]:
+                    strHex = strHex[1:]
+                if '' == strHex:
+                    continue
+                id = int(strHex, 16)
+                if id < 1:
+                    continue
+
+                if not video:
+                    photo_ids.append(id)
+                else:
+                    video_ids.append(id)
+
+        if len(photo_ids) < 2 and len(video_ids) < 2:
+            return '[]'
+
+        sql = '''
+        SELECT * FROM (
+            SELECT 'photo' AS type, id item_id, exposure_time item_time, import_id
+            FROM PhotoTable
+            WHERE id IN (%s) AND id > 0 %s
+            UNION
+            SELECT 'video' AS type, id item_id, exposure_time item_time, import_id
+            FROM VideoTable
+            WHERE id IN (%s) AND id > 0 %s
+        ) ORDER BY %s
+        LIMIT %d,%d
+        ''' % (",".join(str(x) for x in photo_ids), where, ",".join(str(x) for x in video_ids), where, orderby, int(start), int(app.config['LOAD']))
+
+        db = get_db()
+        c = db.execute(sql)
+        return jsonify(c.fetchall())
+
     sql = '''
 	SELECT * FROM (
 	    SELECT 'photo' AS type, id item_id, exposure_time item_time, import_id
@@ -110,6 +161,16 @@ def items():
     db = get_db()
     c = db.execute(sql)
     return jsonify(c.fetchall())
+
+def get_tags():
+    sql = 'SELECT id, name FROM TagTable'
+    db = get_db()
+    c = db.execute(sql)
+    return c.fetchall()
+
+@app.route('/tags/')
+def tags():
+    return jsonify(get_tags())
 
 @app.route('/thumb/<type>/<id>')
 def thumb(type, id):
@@ -130,6 +191,14 @@ def video(id):
     db = get_db()
     c = db.execute('SELECT filename FROM VideoTable WHERE id = ?', [int(id)])
     return send_file(c.fetchone()['filename'])
+
+@app.route('/')
+def index():
+    date_tree = get_date_tree()
+
+    allTags = get_tags()
+
+    return render_template('index.html', date_tree=date_tree, tags=allTags)
 
 def main():
     app.run(host='0.0.0.0', port=5000, debug=os.environ.get('DEBUG', False))
