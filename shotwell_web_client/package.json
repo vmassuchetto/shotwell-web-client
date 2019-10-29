@@ -11,7 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "bootstrap": "^3.3.7",
-    "jquery": "^2.1.0",
+    "jquery": "^3.4.1",
     "justifiedGallery": "^3.6.2",
     "swipebox": "^1.4.6"
   }
